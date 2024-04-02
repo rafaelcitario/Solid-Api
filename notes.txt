@@ -1,0 +1,68 @@
+Estrutura de pastas:
+src - 
+nesta pasta estarão todos os arquivos principais de nossa palicação
+  env -
+  esta pasta guarda os arquivos de verificação de variaveis de ambiente.
+
+dist -
+aqui estão os arquivos transpilados de nossa aplicação
+
+build -
+aqui esta nossa aplicação pronta para produção
+
+---------------------------------------------------------------------------------------------------------------------
+
+Arquivos:
+.npmrc -
+  neste arquivo adicionamos a configuração --save-exact=true
+  se possivel, criar este arquivo antes da instalação de qualquer dependencia.
+  ele é responsável por instalar a versão exata que estamos utilizando neste exato momento, caso nos mesmos ou alguém 
+  baixe nosso projeto futuramente.
+
+app.ts && server.ts -
+  dividimos estes arquivos para melhorar a utilização do app = fastify()
+  também poderia ser feito caso estivessemos utilizando Express neste projeto.
+  Desta forma conseguimos importar a variavel app para outros arquivos, sem que precisemos iniciar o servidor
+  em outro arquivo que não seja o server.ts
+  Esta configuração também facilita a criação de plugins do fastify (functions) como ex: app.register
+  
+________________________________________________________________________________________
+Notes:
+Docker - 
+  Neste projeto foi utilizada a imagem bitnami/postgresql
+  Comandos da cli:
+  docker run 
+  --name 'nome de nossa imagem'
+  -p 5432:5432 (apontando para a porta 5432, porta padrão postgree para nossa maquina.)
+  -e (configurando variaveis de ambiente. Antes de cada variável precisamos passar este parametro.)
+    POSTGRESQL_USERNAME=docker (nosso usuário no DB.)
+    POSTGRESQL_PASSWORD=docker (nosso pwd no DB.)
+    POSTGRESQL_DATABASE=apisolid (nome de nosso DB.)
+  bitnami/postgresql:latest (imagem que queremos utilizar.)
+  Comando na cli:
+    docker run --name api-solid-pg -p 5432:5432 -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker -e POSTGRESQL_DATABASE=apisolid bitnami/postgresql:latest
+    (O comando acima cria e inicia nossa imagem docker)
+    (Com a imagem criada e rodando, podemos acessar nosso DB de um SGBD)
+    docker ps (mosta todas as imagens rodando atualmente.)
+    docker ps -a (mostra todas as imagens do docker.)
+    docker stop 'nome da imagem: api-solid-pg ou id gerado' (isso para nossa imagem.)
+    docker start 'nome da imagem: api-solid-pg ou id gerado' (isso inicia nossa imagem.)
+    docker rm 'nome da imagem: api-solid-pg ou id gerado' (isso remove nossa imagem.)
+
+
+Prisma - 
+  para utilizarmos o prisma instalamos como dev dependencies
+  npm install prisma -D
+  npm isntall typescript ts-node @types/node (recomendado pela documentação para utilizacao com ts)
+
+  Para inicialização do prisma com um provider sqlite,
+  npx prisma init --datasource-provider sqlite
+  podemos mudar o provider manualmente ou passando na cli acima.
+
+  Podemos escolher rodar o comando:
+  npx prisma generate
+    Este comando instala por baixo dos panos @prisma/client
+  Ou podemos configurar nossa models no arquivo schema.prisma e rodar:
+  npx prisma migrate dev (nome de nossa migrate)
+  SGBD prisma:
+  npx prisma studio
