@@ -49,6 +49,26 @@ Docker -
     docker start 'nome da imagem: api-solid-pg ou id gerado' (isso inicia nossa imagem.)
     docker rm 'nome da imagem: api-solid-pg ou id gerado' (isso remove nossa imagem.)
 
+Docker-compose -
+  version: '3.8'
+  services:
+    api-solid-pg:
+      image: bitnami/postgresql:latest
+      ports:
+        - 5432:5432
+      environment:
+        - POSTGRESQL_USERNAME=docker
+        - POSTGRESQL_PASSWORD=docker
+        - POSTGRESQL_DATABASE=apisolid 
+
+  version: (versão docker compose. Até o momento a última versão é a 3.8)
+  services: (serviços que vamos rodar no docker)
+    nome da imagem
+      image: (imagem que utilizaremos)
+      ports:
+        - (portas do banco de dados. Explicação sobre portas na descrição docker acima.)
+      environment: 
+        - (variaveis de ambiente para rodar nossa imagem docker)
 
 Prisma - 
   para utilizarmos o prisma instalamos como dev dependencies
