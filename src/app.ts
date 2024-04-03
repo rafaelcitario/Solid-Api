@@ -1,12 +1,12 @@
 import { fastify } from 'fastify';
-import { PrismaClient } from '@prisma/client';
 export const app = fastify();
 
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 prisma.user.create({
   data: {
     name: 'Rafael Gomes Xavier',
-    email: 'rafael@rafael.com',
-  },
+    email: 'rafael@email.com'
+  }
 });
