@@ -10,6 +10,9 @@ aqui estão os arquivos transpilados de nossa aplicação
 build -
 aqui esta nossa aplicação pronta para produção
 
+lib - 
+aqui estão todas as bibliotecas de terceiros que estamos utilizando em nosso projeto
+
 ---------------------------------------------------------------------------------------------------------------------
 
 Arquivos:

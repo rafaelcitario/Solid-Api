@@ -1,12 +1,29 @@
-import { fastify } from 'fastify';
+import fastify from './lib/fastify';
+import { prisma } from './lib/prisma';
+import { usersSchemaValidateBody } from './lib/zod';
+import { hash } from './lib/crypto';
+
+
 export const app = fastify();
 
-import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
+app.post('/users', async (request, reply) => {
+  const { name, email, password } = usersSchemaValidateBody.parse(request.body);
 
-prisma.user.create({
-  data: {
-    name: 'Rafael Gomes Xavier',
-    email: 'rafael@email.com'
-  }
+  hash.on('readable', async () => {
+    const data = await hash.read();
+    if (data) {
+      await prisma
+        .user
+        .create({
+          data: {
+            name,
+            email,
+            password_hash: data.toString('hex'),
+          }
+        });
+    }
+  });
+  hash.write(password);
+  hash.end();
+  return reply.status(201).send();
 });
