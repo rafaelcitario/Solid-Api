@@ -15,6 +15,13 @@ aqui estão todas as bibliotecas de terceiros que estamos utilizando em nosso pr
 
 test -
 aqui estão todos nossos arquivos de teste
+
+http - 
+aqui fica tudo relacionado aos metodos http como por exemplo requisicoes, retornos
+
+controller -
+aqui estão todos os arquivos responsáveis por lidar com solicitacoes e retornar respostas http ao cliente
+
 ---------------------------------------------------------------------------------------------------------------------
 
 Arquivos:
