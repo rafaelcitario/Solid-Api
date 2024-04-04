@@ -1,5 +1,6 @@
-import 'dotenv/config';
+import 'dotenv/config ';
 import { envSchema } from '@src/lib/zod';
+
 
 const _env = envSchema.safeParse(process.env);
 

@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "studio": "prisma studio",
-    "migrate:generate": "prisma generate",
+    "migrate:generate": "prisma migrate generate",
+    "migrate:reset": "prisma migrate reset",
     "migrate:dev": "prisma migrate dev",
     "lint": "eslint src --ext ts",
     "lint:fix": "eslint src --ext ts --fix",
@@ -19,13 +20,16 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "20.12.2",
+    "@types/supertest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "7.4.0",
     "@typescript-eslint/parser": "7.4.0",
     "eslint": "8.57.0",
     "prisma": "5.12.0",
+    "supertest": "^6.3.4",
     "tsup": "8.0.2",
     "tsx": "4.7.1",
     "typescript": "5.4.3",
+    "vitest": "^1.4.0",
     "zod": "3.22.4"
   },
   "dependencies": {

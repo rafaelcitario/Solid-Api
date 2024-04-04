@@ -13,6 +13,8 @@ aqui esta nossa aplicação pronta para produção
 lib - 
 aqui estão todas as bibliotecas de terceiros que estamos utilizando em nosso projeto
 
+test -
+aqui estão todos nossos arquivos de teste
 ---------------------------------------------------------------------------------------------------------------------
 
 Arquivos:

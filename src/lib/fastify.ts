@@ -1,2 +1,3 @@
-import { fastify } from 'fastify';
-export default fastify;
+import fastify from 'fastify';
+export default fastify();
+

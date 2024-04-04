@@ -7,8 +7,8 @@ export const envSchema = z.object({
 });
 
 export const usersSchemaValidateBody = z.object({
-  name: z.string(),
+  name: z.string().optional(),
   email: z.string(),
-  password: z.coerce.string().min(8)
+  password: z.coerce.string().min(6)
 });
 
