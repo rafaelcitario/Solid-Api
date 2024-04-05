@@ -1,8 +1,9 @@
 Estrutura de pastas:
 src - 
 nesta pasta estarão todos os arquivos principais de nossa palicação
-  env -
-  esta pasta guarda os arquivos de verificação de variaveis de ambiente.
+
+env -
+esta pasta guarda os arquivos de verificação de variaveis de ambiente.
 
 dist -
 aqui estão os arquivos transpilados de nossa aplicação
@@ -21,6 +22,15 @@ aqui fica tudo relacionado aos metodos http como por exemplo requisicoes, retorn
 
 controller -
 aqui estão todos os arquivos responsáveis por lidar com solicitacoes e retornar respostas http ao cliente
+
+services || use-cases
+aqui estão todos os nossos arquivos responsaveis pela logica da operacão
+aqui devemos abstrair toda a logica sem que mudancas no projeto interfiram nelas. Elas precisam ser independentes.
+Assim sendo possivel utilizalas em qualquer parte do projeto sem intereferencia externa.
+
+repository -
+aqui estão todos os arquivos responsáveis por nossa interacao com o banco de dados.
+operacoes como criar, selecionar, atualizar, deletar.... metodos http que fazem interacao com nosso DB.
 
 ---------------------------------------------------------------------------------------------------------------------
 

@@ -12,5 +12,9 @@ export async function registerUserController(request: FastifyRequest, reply: Fas
     return reply.status(409).send();
   }
 
+
+
+
+  
   return reply.status(201).send();
 }
