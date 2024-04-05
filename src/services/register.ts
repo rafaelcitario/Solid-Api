@@ -1,6 +1,5 @@
 import { encryptPassword } from '@src/lib/crypto';
-import { prisma } from '@src/lib/prisma';
-import { UserRepository } from '@src/repository/createUser.repository';
+import { IPrismaUsersRepository } from '@src/repository/IRepositories/prismaUsers.repository';
 
 interface RegisterUserBodyParams {
   name: string,
@@ -8,22 +7,18 @@ interface RegisterUserBodyParams {
   password: string;
 }
 
-export async function registerUserUseCase({ name, email, password }: RegisterUserBodyParams): Promise<void> {
-  const emailIsAlready = await prisma.user.findUnique({
-    where: {
-      email,
-    }
-  });
-
-  if (emailIsAlready) {
-    throw new Error('This email is already exists!');
+export class RegisterUser {
+  private userRepository;
+  constructor(userRepository: IPrismaUsersRepository) {
+    this.userRepository = userRepository;
   }
+  async execute({ name, email, password }: RegisterUserBodyParams) {
+    const encrypedPassword = encryptPassword(password);
 
-  const user = new UserRepository();
-
-  await user.create({
-    name,
-    email,
-    password_hash: encryptPassword(password)
-  });
+    await this.userRepository.create({
+      name,
+      email,
+      password_hash: encrypedPassword
+    });
+  }
 }
